@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Web Calculator</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(45deg, #f3f4f6, #e5e7eb);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            padding: 20px;
+        }
+        
+        h1 {
+            color: #1f2937;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.1);
+        }
+        
+        .calculator {
+            background-color: #ffffff;
+            border-radius: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            padding: 20px;
+        }
+        
+        .display {
+            margin-bottom: 20px;
+        }
+        
+        .display input {
+            width: 100%;
+            height: 60px;
+            border: none;
+            border-radius: 10px;
+            background-color: #f9fafb;
+            color: #111827;
+            font-size: 2rem;
+            text-align: right;
+            padding: 0 15px;
+            box-shadow: inset 0 2px 5px rgba(0,0,0,0.1);
+        }
+.buttons {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 15px;
+        }
+        
+        button {
+            height: 60px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            background-color: #f3f4f6;
+            color: #111827;
+            cursor: pointer;
+            transition: all 0.2s;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+        
+        button:hover {
+            background-color: #e5e7eb;
+            transform: translateY(-2px);
+        }
+        
+        button:active {
+            transform: translateY(0);
+        }
+        
+        button:last-child {
+            background-color: #3b82f6;
+            color: white;
+        }
+        
+        button:last-child:hover {
+            background-color: #2563eb;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Web Calculator</h1>
+    
+    <div class="calculator">
+        <div class="display">
+            <input type="text" id="result" disabled>
+        </div>
+        <div class="buttons">
+            <button onclick="clearDisplay()" class="operator">C</button>
+            <button onclick="appendToDisplay('7')">7</button>
+            <button onclick="appendToDisplay('8')">8</button>
+            <button onclick="appendToDisplay('9')">9</button>
+            <button onclick="appendToDisplay('/')" class="operator">/</button>
+            
+            <button onclick="appendToDisplay('4')">4</button>
+            <button onclick="appendToDisplay('5')">5</button>
+            <button onclick="appendToDisplay('6')">6</button>
+            <button onclick="appendToDisplay('*')" class="operator">*</button>
+            
+            <button onclick="appendToDisplay('1')">1</button>
+            <button onclick="appendToDisplay('2')">2</button>
+            <button onclick="appendToDisplay('3')">3</button>
+            <button onclick="appendToDisplay('-')" class="operator">-</button>
+            
+            <button onclick="appendToDisplay('0')">0</button>
+            <button onclick="appendToDisplay('.')">.</button>
+            <button onclick="calculate()" class="equals">=</button>
+            <button onclick="appendToDisplay('+')" class="operator">+</button>
+        </div>
+    </div>
+    <script>
+        let currentDisplay = '';
+        
+        function appendToDisplay(value) {
+            currentDisplay += value;
+            document.getElementById('result').value = currentDisplay;
+        }
+        
+        function clearDisplay() {
+            currentDisplay = '';
+            document.getElementById('result').value = '';
+        }
+        
+        function calculate() {
+            try {
+                currentDisplay = eval(currentDisplay).toString();
+                document.getElementById('result').value = currentDisplay;
+            } catch (error) {
+                document.getElementById('result').value = 'Error';
+                currentDisplay = '';
+            }
+        }
+    </script>
+</body>
+</html>

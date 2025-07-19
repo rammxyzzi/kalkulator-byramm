@@ -1,0 +1,26 @@
+       button:last-child {
+            background-color: #3b82f6;
+            color: white;
+        }
+        
+        button:last-child:hover {
+            background-color: #2563eb;
+        }
+=======
+        .operator {
+            background-color: #3b82f6;
+            color: white;
+        }
+        
+        .operator:hover {
+            background-color: #2563eb;
+        }
+        
+        .equals {
+            background-color: #10b981;
+            color: white;
+        }
+        
+        .equals:hover {
+            background-color: #059669;
+        }
